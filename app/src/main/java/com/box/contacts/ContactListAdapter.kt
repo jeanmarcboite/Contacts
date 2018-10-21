@@ -21,7 +21,6 @@ class ContactListAdapter(private val myDataset: Array<String>) : RecyclerView.Ad
             .inflate(R.layout.contact, parent, false)
 
         // set the view's size, margins, paddings and layout parameters
-        //TODO...
         return ContactListViewHolder(contactView)
     }
 
