@@ -17,10 +17,10 @@ class ContactsFragment() : ViewPagerFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.contacts_list, container, false) as LinearLayout
         val dataSet = arrayOf("ZERO", "one", "Two")
-        rootView.contactsList.adapter = ContactListAdapter(dataSet)
-        rootView.contactsList.layoutManager = LinearLayoutManager(this.context)
-        return rootView
+        val contactsList = inflater.inflate(R.layout.contacts_list, container, false) as RecyclerView
+        contactsList.adapter = ContactListAdapter(dataSet)
+        contactsList.layoutManager = LinearLayoutManager(this.context)
+        return contactsList
     }
 }
