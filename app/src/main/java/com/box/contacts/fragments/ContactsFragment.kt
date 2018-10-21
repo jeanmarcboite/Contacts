@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.box.contacts.ContactsListAdapter
 import com.box.contacts.R
 
-class ContactsFragment() : ViewPagerFragment() {
+class ContactsFragment : ViewPagerFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.box.contacts.MainActivity
 import com.box.contacts.R
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import android.support.v4.app.Fragment
 
-class BaseViewPagerFragment() : ViewPagerFragment() {
+class BaseViewPagerFragment : ViewPagerFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,7 +28,7 @@ abstract class ViewPagerFragment : Fragment() {
          * The fragment argument representing the section number for this
          * fragment.
          */
-        val ARG_SECTION_NUMBER = "section_number"
+        const val ARG_SECTION_NUMBER = "section_number"
 
         /**
          * Returns a new instance of this fragment for the given section
