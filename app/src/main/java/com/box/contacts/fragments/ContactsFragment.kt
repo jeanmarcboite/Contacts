@@ -26,6 +26,7 @@ class ContactsFragment : ViewPagerFragment() {
 
     fun getContacts() : ArrayList<Contact> {
         val contacts = ArrayList<Contact>()
+        val context = this.context!!
         val cursorLoader = CursorLoader(this.context!!,
             ContactsContract.Contacts.CONTENT_URI,
             Contact.projection, null, null, null)
@@ -33,7 +34,7 @@ class ContactsFragment : ViewPagerFragment() {
 
         if (cursor?.moveToFirst() == true) {
             do {
-                val contact = Contact(cursor)
+                val contact = Contact(context, cursor)
 
                 contacts.add(contact)
             } while (cursor.moveToNext())
