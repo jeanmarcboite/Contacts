@@ -26,23 +26,14 @@ class ContactsFragment : ViewPagerFragment() {
 
     fun getContacts() : ArrayList<Contact> {
         val contacts = ArrayList<Contact>()
-        val projection = arrayOf(ContactsContract.Contacts._ID,
-            ContactsContract.Contacts.LOOKUP_KEY,
-            ContactsContract.Contacts.DISPLAY_NAME)
         val cursorLoader = CursorLoader(this.context!!,
             ContactsContract.Contacts.CONTENT_URI,
-            projection, null, null, null)
+            Contact.projection, null, null, null)
         val cursor = cursorLoader.loadInBackground()
 
         if (cursor?.moveToFirst() == true) {
             do {
-                val idIndex = cursor.getColumnIndex(ContactsContract.Contacts._ID)
-                val lookUpIndex = cursor.getColumnIndex(ContactsContract.Contacts.LOOKUP_KEY)
-                 val nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
-               val contactId = cursor.getInt(idIndex)
-                val lookUpKey = cursor.getString(lookUpIndex)
-                val contactDisplayName = cursor.getString(nameIndex)
-                val contact = Contact(contactId, lookUpKey, contactDisplayName)
+                val contact = Contact(cursor)
 
                 contacts.add(contact)
             } while (cursor.moveToNext())
