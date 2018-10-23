@@ -15,13 +15,13 @@ class SectionsPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm) {
        override fun getItem(position: Int): Fragment {
            return when (position) {
                0 -> ContactsFragment()
-               1 -> OtherFragment()
+               1 -> DictionaryFragment()
+               2 -> OtherFragment()
                else -> ViewPagerFragment.newInstance(position + 1)
            }
         }
 
         override fun getCount(): Int {
-            // Show 3 total pages.
-            return 3
+            return 4
         }
 }
