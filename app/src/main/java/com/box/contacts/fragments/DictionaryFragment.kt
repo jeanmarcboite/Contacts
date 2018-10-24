@@ -8,17 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import com.box.contacts.R
 import android.provider.UserDictionary
-import android.content.ContentResolver
+import android.support.design.widget.FloatingActionButton
+import android.support.design.widget.Snackbar
 import android.support.v4.content.CursorLoader
+import android.support.v7.widget.GridLayoutManager
 import android.widget.TextView
 import com.box.contacts.models.Word
+import kotlinx.android.synthetic.main.words_list.*
 
 
 class DictionaryFragment: ViewPagerFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val wordsList = inflater.inflate(R.layout.contacts_list, container, false) as RecyclerView
+        val wordsListView = inflater.inflate(R.layout.words_list, container, false)
+        val wordsList = wordsListView.findViewById<RecyclerView>(R.id.wordsList)
         wordsList.adapter = DictionaryAdapter(getWords())
-        wordsList.layoutManager = LinearLayoutManager(this.context)
+        wordsList.layoutManager = GridLayoutManager(this.context, 2)
 
         return wordsList
     }
@@ -49,6 +53,7 @@ class DictionaryFragment: ViewPagerFragment() {
 
         override fun onBindViewHolder(holder: DictionaryViewHolder, position: Int) {
             holder.view.findViewById<TextView>(R.id.tvWord).text = words[position].word
+            holder.view.findViewById<TextView>(R.id.tvFrequency).text = words[position].frequency
         }
 
         override fun getItemCount() = words.size

@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
-
         // Set up the ViewPager with the sections adapter.
         container.adapter = mSectionsPagerAdapter
 
