@@ -33,9 +33,9 @@ data class Contact(val context: Context, val cursor: Cursor) {
     fun getPhoneNumbers(): ArrayList<String> {
         val phoneNumbers = ArrayList<String>()
         phoneNumbers.add("+")
-        if (hasPhoneNumber.toInt() > 0) {
+        if (hasPhoneNumber > 0) {
         val phones = context.getContentResolver().query( ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
-            ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ ID, null, null);
+            ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ ID, null, null)
            if (phones?.moveToFirst() == true) {
                while (phones.moveToNext()) {
                    val phoneNumber =
