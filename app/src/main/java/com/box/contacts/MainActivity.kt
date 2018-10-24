@@ -2,7 +2,9 @@ package com.box.contacts
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,12 +26,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar)
+        toolbar.setTitle("Contacts...")
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
         // Set up the ViewPager with the sections adapter.
         viewPager.adapter = mSectionsPagerAdapter
         tabLayout.setupWithViewPager(viewPager)
+
+        tabLayout.addOnTabSelectedListener(TabSelectedListener(toolbar) )
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -38,7 +43,20 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+class TabSelectedListener(val toolbar: Toolbar) : TabLayout.OnTabSelectedListener {
+    override fun onTabReselected(tab: TabLayout.Tab?) {
+    }
 
+    override fun onTabUnselected(tab: TabLayout.Tab?) {
+    }
+
+    override fun onTabSelected(tab: TabLayout.Tab?) {
+        if (tab != null) {
+            toolbar.title = tab.text
+        }
+    }
+
+}
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
