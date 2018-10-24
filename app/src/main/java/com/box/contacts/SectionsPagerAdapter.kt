@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.box.contacts.fragments.*
 
+val tabTitles = arrayOf("Contacts", "Dictionary", "Other", "Default")
+
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
@@ -22,6 +24,10 @@ class SectionsPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm) {
         }
 
         override fun getCount(): Int {
-            return 4
+            return tabTitles.count()
         }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return tabTitles[position]
+    }
 }
