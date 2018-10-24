@@ -43,7 +43,7 @@ data class Contact(val context: Context, val cursor: Cursor) {
                    phoneNumbers[0] = phoneNumber
                }
            }
-            phones.close()
+            phones?.close()
         }
         return phoneNumbers
     }

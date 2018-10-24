@@ -24,7 +24,7 @@ class DictionaryFragment: ViewPagerFragment() {
         wordsList.adapter = DictionaryAdapter(getWords())
         wordsList.layoutManager = GridLayoutManager(this.context, 2)
 
-        return wordsList
+        return wordsListView
     }
 
     fun getWords() : ArrayList<Word> {
